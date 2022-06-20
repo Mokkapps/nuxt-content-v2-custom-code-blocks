@@ -65,7 +65,12 @@ const languageColor = computed(() =>
 <style scoped>
 .container {
   background: #1e1e1e;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding-top: 1em;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .bottom-container {
@@ -109,6 +114,7 @@ const languageColor = computed(() =>
   overflow-x: auto;
   padding: 1rem;
   line-height: 1.625;
+  counter-reset: lines;
 }
 
 :slotted(pre code) {
@@ -122,6 +128,16 @@ const languageColor = computed(() =>
   min-height: 1rem;
 }
 
+:slotted(pre code .line::before) {
+  counter-increment: lines;
+  content: counter(lines);
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: left;
+  color: rgba(115, 138, 148, 0.4);
+}
+
 :slotted(pre code .highlight) {
   background-color: #363b46;
   display: block;
@@ -130,13 +146,5 @@ const languageColor = computed(() =>
   padding-right: 1em;
   padding-left: 0.75em;
   border-left: 0.25em solid red;
-}
-
-.container {
-  position: relative;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  border-radius: 0.5rem;
 }
 </style>
