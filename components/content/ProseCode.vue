@@ -32,7 +32,7 @@ const props = withDefaults(
     filename?: string | null;
     highlights?: Array<number>;
   }>(),
-  { code: '', language: null, filename: null, highlights: [] }
+  { code: '', language: null, filename: null, highlights: () => [] }
 );
 
 const languageMap: Record<
